@@ -4,12 +4,12 @@ cp options.pptpd /etc/ppp/options.pptpd
 cp chap-secrets /etc/ppp/chap-secrets
 cp ip-up /etc/ppp/ip-up
 
-cp /etc/sysctl.conf
+cp sysctl.conf /etc/sysctl.conf
 sysctl -p
 
 #先修改公网ip，再执行
 iptables -t nat -A POSTROUTING -s 192.168.0.0/24 -j MASQUERADE
-iptables -t nat -A POSTROUTING -s 192.168.0.0/255.255.255.0 -j SNAT --to-source 47.243.21.54
+iptables -t nat -A POSTROUTING -s 192.168.0.0/255.255.255.0 -j SNAT --to-source 47.242.145.203 
 
 #要用这个而不是centos的
 sudo iptables-save
